@@ -19,7 +19,8 @@
   },
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack-dev-server"
+    "build": "webpack-dev-server",
+    "dev": ".\\node_modules\\.bin\\webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
