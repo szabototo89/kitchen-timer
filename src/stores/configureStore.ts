@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux';
-import appReducer from 'reducers/appReducer';
 
 const logger = store => next => action => {
   console.group(action.type);
@@ -10,8 +9,8 @@ const logger = store => next => action => {
   return result;
 };
 
-export default function configureStore<T>(initialState: T = undefined) {
-  return createStore(appReducer, initialState, applyMiddleware(
+export default function configureStore<T>(reducer, initialState: T = undefined) {
+  return createStore(reducer, initialState, applyMiddleware(
     logger
   ));
 }
