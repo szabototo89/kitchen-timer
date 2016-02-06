@@ -4,13 +4,13 @@ import Button from 'common/button';
 
 export interface NumericTextBoxProps {
   value: number;
-  hasValueChanged?: (previousValue, currentValue) => void;
+  hasValueChanged?: (currentValue) => void;
 }
 
 function NumericTextBox({ value, hasValueChanged }: NumericTextBoxProps) {
 
   const changeNumericValue = (actual) => {
-    hasValueChanged && hasValueChanged(value, value + actual);
+    hasValueChanged && hasValueChanged(value + actual);
   };
 
   return (
