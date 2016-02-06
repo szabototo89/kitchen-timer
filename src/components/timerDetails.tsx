@@ -29,17 +29,17 @@ function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange }: Timer
 
       <div>
         <NumericTextBox value={duration.hours}
-                        hasValueChanged={(value) => handleTimerValueChange({ hours: value })} />
+                        onValueChange={(value) => handleTimerValueChange({ hours: value })} />
       </div>
 
       <div>
         <NumericTextBox value={duration.minutes}
-                        hasValueChanged={(value) => handleTimerValueChange({ minutes: value })} />
+                        onValueChange={(value) => handleTimerValueChange({ minutes: value })} />
       </div>
 
       <div>
         <NumericTextBox value={duration.seconds}
-                        hasValueChanged={(value) => handleTimerValueChange({ seconds: value })} />
+                        onValueChange={(value) => handleTimerValueChange({ seconds: value })} />
       </div>
     </div>
   );
