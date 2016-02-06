@@ -2,15 +2,15 @@ import * as React from 'react';
 import Button from 'common/button';
 
 export interface TimerListControlsProps {
-  addTimerEvent: () => void;
-  removeTimerEvent: () => void;
+  onTimerAdd: () => void;
+  onTimerRemove: () => void;
 }
 
-function TimerListControls({ addTimerEvent, removeTimerEvent }: TimerListControlsProps) {
+function TimerListControls({ onTimerAdd, onTimerRemove }: TimerListControlsProps) {
   return (
     <div>
-      <Button onClick={addTimerEvent}>Add Timer</Button>
-      <Button onClick={removeTimerEvent}>Remove Timer</Button>
+      <Button onClick={onTimerAdd}>Add Timer</Button>
+      <Button onClick={onTimerRemove}>Remove Timer</Button>
     </div>
   );
 }

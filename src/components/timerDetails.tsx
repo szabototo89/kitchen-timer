@@ -4,21 +4,27 @@ import TextBox from 'common/textbox';
 import NumericTextBox from 'common/numericTextBox';
 
 export interface TimerDetailsProps {
-  timer: Timer;
-  hasTimerChanged?(timer: Timer, value: any): void;
+  timer?: Timer;
+  onTimerDurationChange?(timer: Timer, value: any): void;
+  onTimerNameChange?(value: string): void;
 }
 
-function TimerDetails({ timer, hasTimerChanged }: TimerDetailsProps) {
+function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange }: TimerDetailsProps) {
   const { duration } = timer;
 
   const changeTimerValue = (value) => {
-    hasTimerChanged(timer, value);
+    onTimerDurationChange && onTimerDurationChange(timer, value);
+  };
+
+  const changeTimerName = (value: string) => {
+    onTimerNameChange && onTimerNameChange(value);
   };
 
   return (
     <div>
       <TextBox placeholder="Type your timer's name here ..."
                value={timer.name}
+               onValueChange={changeTimerName}
       />
 
       <div>

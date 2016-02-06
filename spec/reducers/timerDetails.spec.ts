@@ -1,9 +1,11 @@
 ///<reference path="../../typings/mocha/mocha.d.ts"/>
+
 import { assert } from 'chai';
 import Duration from "models/duration";
 import timerDetails from 'reducers/timerDetails';
 
 import { changeTimerName, changeTimerDuration } from "actions/timerDetailsActions";
+import TimerDetailsState from "reducers/timerDetails";
 
 describe('timerDetails reducer', function() {
   it('should return an empty state when state is null', function() {
@@ -16,8 +18,8 @@ describe('timerDetails reducer', function() {
     // assert
 
     assert.deepEqual(result, {
-      name: '',
-      duration: null,
+      name: null,
+      duration: new Duration(),
       timerId: null
     });
   });
@@ -33,7 +35,7 @@ describe('timerDetails reducer', function() {
     // assert
     assert.deepEqual(result, {
       timerId: null,
-      duration: null,
+      duration: new Duration(),
       name: 'my-timer'
     });
   });
@@ -50,9 +52,47 @@ describe('timerDetails reducer', function() {
 
     // assert
     assert.deepEqual(result, {
-      timerId: null,
-      duration: new Duration(10, 0, 0),
-      name: null
+      timerId: initialState.timerId,
+      name: initialState.name,
+      duration: new Duration(10)
+    });
+  });
+
+  it('should return a new TimerDetailsState with changed duration when CHANGE_DURATION action has passed multiple values', function () {
+    // arrange
+    const initialState = timerDetails(null, null);
+    const action = changeTimerDuration({
+      hours: 10,
+      minutes: 30
+    });
+
+    // act
+    const result = timerDetails(initialState, action);
+
+    // assert
+    assert.deepEqual(result, {
+      timerId: initialState.timerId,
+      name: initialState.name,
+      duration: new Duration(10, 30)
+    });
+  });
+
+  it('should return zero when duration is lesser than 0', function () {
+    // arrange
+    const initialState = timerDetails(null, null);
+    const action = changeTimerDuration({
+      hours: -1,
+      minutes: -4
+    });
+
+    // act
+    const result = timerDetails(initialState, action);
+
+    // assert
+    assert.deepEqual(result, {
+      timerId: initialState.timerId,
+      name: initialState.name,
+      duration: new Duration(0, 0, 0)
     });
   });
 });
