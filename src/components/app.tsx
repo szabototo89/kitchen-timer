@@ -15,7 +15,7 @@ function App({ }) {
                          removeTimerEvent={() => console.log('remove timer event')}
       />
 
-      <TimerDetails timer={new Timer('1', 'my timer', new Duration(1,2,3))}/>
+      <TimerDetails timer={new Timer('1', 'my timer', new Duration(1, 2, 3))}/>
     </div>
   );
 }
