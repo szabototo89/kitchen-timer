@@ -12,11 +12,11 @@ export interface TimerDetailsProps {
 function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange }: TimerDetailsProps) {
   const { duration } = timer;
 
-  const changeTimerValue = (value) => {
+  const handleTimerValueChange = (value) => {
     onTimerDurationChange && onTimerDurationChange(timer, value);
   };
 
-  const changeTimerName = (value: string) => {
+  const handleTimerNameChange = (value: string) => {
     onTimerNameChange && onTimerNameChange(value);
   };
 
@@ -24,22 +24,22 @@ function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange }: Timer
     <div>
       <TextBox placeholder="Type your timer's name here ..."
                value={timer.name}
-               onValueChange={changeTimerName}
+               onValueChange={handleTimerNameChange}
       />
 
       <div>
         <NumericTextBox value={duration.hours}
-                        hasValueChanged={(value) => changeTimerValue({ hours: value })} />
+                        hasValueChanged={(value) => handleTimerValueChange({ hours: value })} />
       </div>
 
       <div>
         <NumericTextBox value={duration.minutes}
-                        hasValueChanged={(value) => changeTimerValue({ minutes: value })} />
+                        hasValueChanged={(value) => handleTimerValueChange({ minutes: value })} />
       </div>
 
       <div>
         <NumericTextBox value={duration.seconds}
-                        hasValueChanged={(value) => changeTimerValue({ seconds: value })} />
+                        hasValueChanged={(value) => handleTimerValueChange({ seconds: value })} />
       </div>
     </div>
   );

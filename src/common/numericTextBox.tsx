@@ -4,20 +4,20 @@ import Button from 'common/button';
 
 export interface NumericTextBoxProps {
   value: number;
-  hasValueChanged?: (currentValue) => void;
+  onValueChange?: (currentValue) => void;
 }
 
-function NumericTextBox({ value, hasValueChanged }: NumericTextBoxProps) {
+function NumericTextBox({ value, onValueChange }: NumericTextBoxProps) {
 
-  const changeNumericValue = (actual) => {
-    hasValueChanged && hasValueChanged(value + actual);
+  const handleNumericValueChange = (actual) => {
+    onValueChange && onValueChange(value + actual);
   };
 
   return (
     <div>
       <span>{ value }</span>
-      <Button onClick={() => changeNumericValue(1)}>+</Button>
-      <Button onClick={() => changeNumericValue(-1)}>-</Button>
+      <Button onClick={() => handleNumericValueChange(1)}>+</Button>
+      <Button onClick={() => handleNumericValueChange(-1)}>-</Button>
     </div>
   );
 }

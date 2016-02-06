@@ -3,11 +3,11 @@ import * as React from 'react';
 function TextBox(props: any) {
   const { onValueChange } = props;
 
-  function hasValueChanged(event: any) {
+  function handleValueChange(event: any) {
     onValueChange && onValueChange(event.target.value);
   }
 
-  return <input type="text" {...props} onChange={hasValueChanged} />
+  return <input type="text" {...props} onChange={handleValueChange} />
 }
 
 export default TextBox;
