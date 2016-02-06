@@ -25,7 +25,6 @@ const timerListReducer = createAction(initialState, {
   },
 
   [ActionTypes.timerList.REMOVE_TIMER](state: TimerListReducerState, action: RemoveTimerAction): TimerListReducerState {
-    debugger;
     const { timerId } = action;
 
     return Object.assign({}, state, {

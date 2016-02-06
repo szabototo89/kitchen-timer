@@ -8,8 +8,6 @@ import appReducer from 'reducers/appReducer';
 
 const store = configureStore(appReducer);
 
-console.log(store, store.getState())
-
 const application = (
   <Provider store={store}>
     <App />

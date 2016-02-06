@@ -27,20 +27,12 @@ function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange }: Timer
                onValueChange={handleTimerNameChange}
       />
 
-      <div>
-        <NumericTextBox value={duration.hours}
-                        onValueChange={(value) => handleTimerValueChange({ hours: value })} />
-      </div>
-
-      <div>
-        <NumericTextBox value={duration.minutes}
-                        onValueChange={(value) => handleTimerValueChange({ minutes: value })} />
-      </div>
-
-      <div>
-        <NumericTextBox value={duration.seconds}
-                        onValueChange={(value) => handleTimerValueChange({ seconds: value })} />
-      </div>
+      <NumericTextBox value={duration.hours}
+                      onValueChange={(value) => handleTimerValueChange({ hours: value })} />
+      <NumericTextBox value={duration.minutes}
+                      onValueChange={(value) => handleTimerValueChange({ minutes: value })} />
+      <NumericTextBox value={duration.seconds}
+                      onValueChange={(value) => handleTimerValueChange({ seconds: value })} />
     </div>
   );
 }

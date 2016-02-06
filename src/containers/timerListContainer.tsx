@@ -2,13 +2,20 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import TimerList from 'components/timerList';
+import { removeTimer } from "actions/timerListActions";
 
 function mapStateToProps(state) {
-  debugger;
-
   return {
     timers: state.timerList.timers
   };
 }
 
-export default connect(mapStateToProps)(TimerList as any);
+function mapDispatchToProps(dispatch) {
+  return {
+    onTimerRemove(timerId: string) {
+      dispatch(removeTimer(timerId));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TimerList as any);
