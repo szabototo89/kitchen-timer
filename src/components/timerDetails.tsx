@@ -1,16 +1,18 @@
 import * as React from 'react';
 import Timer from "models/timer";
 import TextBox from 'common/textbox';
+import Button from 'common/button';
 import NumericTextBox from 'common/numericTextBox';
 
 export interface TimerDetailsProps {
   timer?: Timer;
   onTimerDurationChange?(timer: Timer, value: any): void;
   onTimerNameChange?(value: string): void;
+  onTimerSave?(timer: Timer): void;
 }
 
-function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange }: TimerDetailsProps) {
-  const { duration } = timer;
+function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange, onTimerSave }: TimerDetailsProps) {
+  const { name, duration } = timer;
 
   const handleTimerValueChange = (value) => {
     onTimerDurationChange && onTimerDurationChange(timer, value);
@@ -20,10 +22,14 @@ function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange }: Timer
     onTimerNameChange && onTimerNameChange(value);
   };
 
+  const handleTimerSave = () => {
+    onTimerSave && onTimerSave(timer);
+  };
+
   return (
     <div>
       <TextBox placeholder="Type your timer's name here ..."
-               value={timer.name}
+               value={name}
                onValueChange={handleTimerNameChange}
       />
 
@@ -33,6 +39,8 @@ function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange }: Timer
                       onValueChange={(value) => handleTimerValueChange({ minutes: value })} />
       <NumericTextBox value={duration.seconds}
                       onValueChange={(value) => handleTimerValueChange({ seconds: value })} />
+
+      <Button onClick={handleTimerSave}>Save</Button>
     </div>
   );
 }

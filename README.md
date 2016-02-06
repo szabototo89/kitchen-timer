@@ -1,2 +1,2 @@
 # Kitchen Timer
-Kitchen Timer written in React + Redux
+Kitchen Timer written in React + Redux + TypeScript

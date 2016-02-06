@@ -1,9 +1,10 @@
 import Duration from "models/duration";
 import Timer from "models/timer";
-import {createAction} from "reducers/createAction";
+import { createAction } from "reducers/createAction";
 import ActionTypes from 'actions/actionTypes';
 import { ChangeTimerNameAction, ChangeTimerDuration } from 'actions/timerDetailsActions';
 import { getValueOrDefault } from 'utils/utils';
+import { EditTimerAction } from "actions/timerListActions";
 
 export class TimerDetailsState {
   public constructor(
@@ -35,6 +36,13 @@ const timerDetails = createAction(initialState, {
       timerId, name, new Duration(determineValue(hours, duration.hours),
                                   determineValue(minutes, duration.minutes),
                                   determineValue(seconds, duration.seconds))
+    );
+  },
+
+  [ActionTypes.timerDetails.LOAD_TIMER](state: TimerDetailsState, action: EditTimerAction) {
+    const { timer } = action;
+    return new TimerDetailsState(
+      timer.id, timer.name, timer.duration
     );
   }
 });

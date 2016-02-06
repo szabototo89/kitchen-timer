@@ -29,3 +29,10 @@ export function changeTimerDuration(duration: TimeDuration): ChangeTimerDuration
     duration
   };
 }
+
+export function updateTimer(timer: Timer) {
+  return {
+    type: ActionTypes.timerList.UPDATE_TIMER,
+    timer
+  };
+}

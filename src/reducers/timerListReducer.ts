@@ -30,6 +30,20 @@ const timerListReducer = createAction(initialState, {
     return Object.assign({}, state, {
       timers: state.timers.filter(timer => timer.id !== timerId)
     });
+  },
+
+  [ActionTypes.timerList.UPDATE_TIMER](state: TimerListReducerState, action): TimerListReducerState {
+    const { timer: newTimer } = action;
+
+    return Object.assign({}, state, {
+      timers: state.timers.map(timer => {
+        if (timer.id === newTimer.id) {
+          return newTimer;
+        }
+
+        return timer;
+      })
+    });
   }
 });
 
