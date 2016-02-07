@@ -3,6 +3,7 @@ import Timer from "models/timer";
 import TextBox from 'common/textbox';
 import Button from 'common/button';
 import NumericTextBox from 'common/numericTextBox';
+import ClassNameBuilder from 'utils/classNameBuilder';
 
 export interface TimerDetailsProps {
   timer?: Timer;
@@ -10,6 +11,8 @@ export interface TimerDetailsProps {
   onTimerNameChange?(value: string): void;
   onTimerSave?(timer: Timer): void;
 }
+
+const classBuilder = new ClassNameBuilder('timer-details');
 
 function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange, onTimerSave }: TimerDetailsProps) {
   const { name, duration } = timer;
@@ -29,6 +32,7 @@ function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange, onTimer
   return (
     <div>
       <TextBox placeholder="Type your timer's name here ..."
+               className={classBuilder.element('timer-name')}
                value={name}
                onValueChange={handleTimerNameChange}
       />
@@ -40,7 +44,10 @@ function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange, onTimer
       <NumericTextBox value={duration.seconds}
                       onValueChange={(value) => handleTimerValueChange({ seconds: value })} />
 
-      <Button onClick={handleTimerSave}>Save</Button>
+      <Button onClick={handleTimerSave}
+              className={classBuilder.element('save-button')}>
+        Save
+      </Button>
     </div>
   );
 }
