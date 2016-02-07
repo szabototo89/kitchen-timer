@@ -4,10 +4,17 @@ import { assert } from 'chai';
 import Duration from "models/duration";
 import timerDetails from 'reducers/timerDetails';
 
+import { editTimer } from 'actions/timerListActions';
 import { changeTimerName, changeTimerDuration } from "actions/timerDetailsActions";
 import TimerDetailsState from "reducers/timerDetails";
+import Timer from "models/timer";
 
 describe('timerDetails reducer', function() {
+
+  const getInitialState = () => {
+    return timerDetails(null, null);
+  };
+
   it('should return an empty state when state is null', function() {
     // arrange
     const state = null;
@@ -93,6 +100,23 @@ describe('timerDetails reducer', function() {
       timerId: initialState.timerId,
       name: initialState.name,
       duration: new Duration(0, 0, 0)
+    });
+  });
+
+  it('should load timer in timer list into timer details', function () {
+    // arrange
+    const initialState = getInitialState();
+    const timer = new Timer('timer-1', 'demo timer', new Duration(1, 2, 3));
+    const action = editTimer(timer);
+
+    // act
+    const result = timerDetails(initialState, action);
+
+    // assert
+    assert.deepEqual(result, {
+      timerId: 'timer-1',
+      name: 'demo timer',
+      duration: new Duration(1, 2, 3)
     });
   });
 });
