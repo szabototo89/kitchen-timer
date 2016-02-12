@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Timer from "models/timer";
 import TimerDetails from 'components/timerDetails';
 import { TimerDetailsProps } from "components/timerDetails";
-import {changeTimerDuration, changeTimerName, updateTimer} from "actions/timerDetailsActions";
+import { changeTimerDuration, changeTimerName, updateTimer } from "actions/timerDetailsActions";
 import { TimerDetailsState } from "reducers/timerDetails";
 
 const mapStateToProps = (state) => {

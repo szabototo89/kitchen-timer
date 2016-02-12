@@ -1,8 +1,9 @@
 import * as React from 'react';
 import ActiveTimer from 'components/activeTimer';
+import Timer from "models/timer";
 
 interface ActiveTimerListProps {
-  timers: Array<any>;
+  timers: Array<Timer>;
 }
 
 function ActiveTimerList({ timers }: ActiveTimerListProps) {

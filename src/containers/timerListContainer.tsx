@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import TimerList from 'components/timerList';
-import { removeTimer, editTimer } from "actions/timerListActions";
+import { startTimer, removeTimer, editTimer } from "actions/timerListActions";
 import Timer from "models/timer";
 
 function mapStateToProps(state) {
@@ -19,6 +19,10 @@ function mapDispatchToProps(dispatch) {
 
     onTimerEdit(timer: Timer) {
       dispatch(editTimer(timer));
+    },
+
+    onTimerStart(timer: Timer) {
+      dispatch(startTimer(timer));
     }
   };
 }

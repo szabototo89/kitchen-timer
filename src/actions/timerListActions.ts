@@ -29,3 +29,10 @@ export function editTimer(timer: Timer): EditTimerAction {
     timer
   };
 }
+
+export function startTimer(timer: Timer) {
+  return {
+    type: ActionTypes.timerList.START_TIMER,
+    timer
+  };
+}

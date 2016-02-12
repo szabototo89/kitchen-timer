@@ -10,7 +10,22 @@ const ActionTypes = createActionType({
   timerList: {
     ADD_TIMER: null,
     REMOVE_TIMER: null,
-    UPDATE_TIMER: null
+    UPDATE_TIMER: null,
+    START_TIMER: null
+  },
+
+  activeTimer: {
+    START_TIMER: null,
+    PAUSE_TIMER: null
+  },
+
+  activeTimerList: {
+    REMOVE_FROM_LIST: null
+  },
+
+  listControl: {
+    ADD_ITEM: null,
+    REMOVE_ITEM: null
   }
 });
 

@@ -8,21 +8,28 @@ export interface TimerListProps {
   timers: any[];
   onTimerRemove(timerId: string);
   onTimerEdit(timer: Timer);
+  onTimerStart(timer: Timer);
 }
 
 const classBuilder = new ClassNameBuilder('timer-list');
 
-function TimerList({ timers, onTimerRemove, onTimerEdit }: TimerListProps) {
+function TimerList({ timers, onTimerRemove, onTimerEdit, onTimerStart }: TimerListProps) {
   return (
     <div className={classBuilder.element('container')}>
       {timers.map(timer => (
         <div key={timer.id} className={classBuilder.element('timer')}>
           <TimerListItem timer={timer} />
-          <Button className={classBuilder.element('edit-button')}
+
+          <Button className={classBuilder.element('button', 'start')}
+                  onClick={onTimerStart.bind(null, timer)}>
+            Start timer
+          </Button>
+
+          <Button className={classBuilder.element('button', 'edit')}
                   onClick={onTimerEdit.bind(null, timer)}>
             Edit
           </Button>
-          <Button className={classBuilder.element('remove-button')}
+          <Button className={classBuilder.element('button', 'remove')}
                   onClick={onTimerRemove.bind(null, timer.id)}>
             Remove
           </Button>
