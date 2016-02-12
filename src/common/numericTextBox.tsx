@@ -8,7 +8,7 @@ export interface NumericTextBoxProps {
   onValueChange?: (currentValue) => void;
 }
 
-const classBuilder = new ClassNameBuilder('numeric-textbox')
+const classBuilder = new ClassNameBuilder('numeric-textbox');
 
 function NumericTextBox({ value, onValueChange }: NumericTextBoxProps) {
   const handleNumericValueChange = (actual) => {
@@ -18,12 +18,12 @@ function NumericTextBox({ value, onValueChange }: NumericTextBoxProps) {
   return (
     <div className={classBuilder.element('container')}>
       <span className={classBuilder.element('value')}>{ value }</span>
-      <Button className={classBuilder.element('increment-button')}
+      <Button className={classBuilder.element('button', 'increment')}
               onClick={() => handleNumericValueChange(1)}>
         +
       </Button>
 
-      <Button className={classBuilder.element('decrement-button')}
+      <Button className={classBuilder.element('button', 'decrement')}
               onClick={() => handleNumericValueChange(-1)}>
         -
       </Button>

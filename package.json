@@ -2,11 +2,15 @@
   "name": "application-name",
   "version": "0.0.1",
   "devDependencies": {
+    "bower": "^1.7.7",
     "browser-sync": "^2.11.1",
     "browser-sync-webpack-plugin": "^1.0.1",
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^1.1.1",
+    "css-loader": "^0.23.1",
     "expect.js": "^0.3.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
     "glob": "^6.0.4",
     "immutable": "^3.7.6",
     "karma": "^0.13.19",
@@ -16,8 +20,12 @@
     "karma-mocha": "^0.2.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
+    "node-sass": "^3.4.2",
+    "raw-loader": "^0.5.1",
     "react-hot-loader": "^1.3.0",
     "react-redux": "^4.1.2",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
     "ts-loader": "^0.8.0",
     "tsd": "^0.6.5",
     "typescript": "^1.7.5",
@@ -25,6 +33,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "bootstrap": "^3.3.6",
+    "bootstrap-sass": "^3.3.6",
     "expect": "^1.14.0",
     "mocha": "^2.4.5",
     "react": "^0.14.7",
@@ -35,6 +45,7 @@
   "scripts": {
     "build": "webpack-dev-server",
     "dev": ".\\node_modules\\.bin\\webpack-dev-server",
+    "design": "webpack --config=webpack.static.config.js",
     "test": ".\\node_modules\\.bin\\karma start",
     "tsd": ".\\node_modules\\.bin\\tsd"
   },

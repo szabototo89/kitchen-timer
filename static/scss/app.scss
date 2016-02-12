@@ -1,0 +1,29 @@
+@import 'libs';
+@import 'timer-list';
+@import 'utilities';
+
+@include block(application) {
+  @include element(container) {
+    @extend .container;
+  }
+}
+
+@include block(timer-details) {
+  @include element(save-button) {
+    @extend .btn, .btn-primary;
+  }
+
+  @include element(timer-name) {
+    @extend .form-control;
+  }
+
+  @include element(container) {
+    @extend .form-group;
+  }
+}
+
+@include block(numeric-textbox) {
+  @include element(button) {
+    @extend .btn, .btn-default;
+  }
+}

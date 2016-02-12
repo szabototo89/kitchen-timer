@@ -1,0 +1,33 @@
+@import 'utilities';
+
+@include block(timer-list) {
+  @include element(container) {
+
+  }
+
+  @include element(edit-button) {
+    @extend .btn, .btn-success;
+  }
+
+  @include element(remove-button) {
+    @extend .btn, .btn-danger;
+  }
+}
+
+@include block(timer-list-item) {
+  @include element(name) {
+    @extend h3;
+  }
+}
+
+@include block(time-duration-control) {
+  @include element(value) {
+    @extend strong;
+  }
+}
+
+@include block(timer-list-controls) {
+  @include element(add-timer-button) {
+    @extend .btn, .btn-default;
+  }
+}
