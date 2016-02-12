@@ -30,7 +30,7 @@ function TimerDetails({ timer, onTimerDurationChange, onTimerNameChange, onTimer
   };
 
   return (
-    <div class="timer-details__container">
+    <div className="timer-details__container">
       <TextBox placeholder="Type your timer's name here ..."
                className={classBuilder.element('timer-name')}
                value={name}
