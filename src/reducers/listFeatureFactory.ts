@@ -10,6 +10,22 @@ export class ListFeatureFactory {
     this.id = `ListFeatureFactory__${name}`;
   }
 
+  public createActions() {
+    return {
+      addItem: (item) => ({
+        $id$: this.id,
+        type: ActionTypes.listControl.ADD_ITEM,
+        item
+      }),
+
+      removeItem: (item) => ({
+        $id$: this.id,
+        type: ActionTypes.listControl.REMOVE_ITEM,
+        item
+      })
+    };
+  }
+
   public createReducer(initialState, options) {
     const { id } = this;
     options = assign(options, {
