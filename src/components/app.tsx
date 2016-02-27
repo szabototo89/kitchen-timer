@@ -13,10 +13,33 @@ import Duration from 'models/duration';
 function App() {
   return (
     <div>
-      <ActiveTimerListContainer />
-      <TimerListContainer />
-      <TimerListControlsContainer />
-      <TimerDetailsContainer />
+      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header className="mdl-layout__header">
+          <div className="mdl-layout__header-row">
+            { /* Title */ }
+            <span className="mdl-layout-title">Kitchen Timer</span>
+          </div>
+          { /* Tabs */ }
+          <div className="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a href="#scroll-tab-1" className="mdl-layout__tab">Active Timers</a>
+            <a href="#scroll-tab-2" className="mdl-layout__tab is-active">Timer Presets</a>
+          </div>
+        </header>
+        <div className="mdl-layout__drawer">
+          <span className="mdl-layout-title">Title</span>
+        </div>
+        <main className="mdl-layout__content">
+          <section className="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+            <ActiveTimerListContainer />
+          </section>
+
+          <section className="mdl-layout__tab-panel" id="scroll-tab-2">
+            <TimerListContainer />
+            <TimerListControlsContainer />
+            <TimerDetailsContainer />
+          </section>
+        </main>
+      </div>
     </div>
   );
 }

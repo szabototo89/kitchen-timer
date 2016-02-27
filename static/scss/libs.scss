@@ -1,2 +1,6 @@
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// Bootstrap fix:
+// $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+// @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+
+@import '~material-design-lite/material.min.css';

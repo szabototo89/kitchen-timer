@@ -11,17 +11,16 @@ module.exports = {
   devtool: 'eval-source-map',
 
   module: {
-
     loaders: [{
       test: /\.s?(c|a)ss$/,
       exclude: 'node_modules',
       loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
       // loader: 'raw-loader!style-loader!css-loader!sass-loader'
     },
-      {
-        test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader : 'file-loader'
-      }]
+    {
+      test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+      loader : 'file-loader'
+    }]
   },
   resolve: {
     root: [

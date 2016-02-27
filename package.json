@@ -36,6 +36,7 @@
     "bootstrap": "^3.3.6",
     "bootstrap-sass": "^3.3.6",
     "expect": "^1.14.0",
+    "material-design-lite": "^1.1.1",
     "mocha": "^2.4.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
