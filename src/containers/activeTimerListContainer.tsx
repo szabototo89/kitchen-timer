@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
-    timers: state.activeTimerList.timers.map(timer => timer.timer)
+    timers: state.activeTimerList.timers.map(activeTimer => activeTimer.timer)
   };
 }
 

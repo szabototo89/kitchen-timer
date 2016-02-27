@@ -10,7 +10,7 @@ function ActiveTimerList({ timers, onStartTimer, onPauseTimer }: ActiveTimerList
   return (
     <div className="active-timer-list__container">
       {timers.map(activeTimer =>
-        <ActiveTimer key={activeTimer.id} timer={activeTimer}
+        <ActiveTimer key={activeTimer.id} duration={activeTimer.duration}
                      onStartTimer={onStartTimer.bind(activeTimer)}
                      onPauseTimer={onPauseTimer.bind(activeTimer)} />
       )}

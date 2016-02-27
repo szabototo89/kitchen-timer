@@ -8,6 +8,7 @@ import appStore from 'stores/appStore';
 
 const initialState = {
   timer: null,
+  duration: null,
   state: null,
   timerInstance: null
 };
@@ -19,6 +20,7 @@ const activeTimerReducer = createAction(initialState, {
   [ActionTypes.activeTimerList.ADD_TIMER](state, action) {
     return {
       timer: state,
+      duration: Duration.copy(state.duration),
       state: 'paused',
       timerInstance: null
     };
@@ -26,6 +28,8 @@ const activeTimerReducer = createAction(initialState, {
 
   [ActionTypes.activeTimer.START_TIMER](state:ActiveTimerState, action) {
     const { timer } = action;
+
+    if (timer.id !== state.timer.id) return state;
 
     const timerInstance = new TimerInstance(1000, timer.duration.seconds)
       .on('onInstance', function (steps, count) {
@@ -37,7 +41,6 @@ const activeTimerReducer = createAction(initialState, {
       .start();
 
     return Object.assign({}, state, {
-      timer,
       timerInstance,
       state: 'started'
     });
@@ -45,19 +48,16 @@ const activeTimerReducer = createAction(initialState, {
 
   [ActionTypes.activeTimer.UPDATE_TIMER](state:ActiveTimerState, action) {
     const { timer, duration } = action;
-    const { duration: timerDuration } = state.timer;
+    const { duration: timerDuration } = state;
 
     if (state.state === 'paused') return state;
 
     return Object.assign({}, state, {
-      timer: new Timer(
-        timer.id,
-        timer.name,
-        new Duration(
-          duration.hours + timerDuration.hours,
-          duration.minutes + timerDuration.minutes,
-          duration.seconds + timerDuration.seconds
-        ))
+      duration: new Duration(
+        duration.hours + timerDuration.hours,
+        duration.minutes + timerDuration.minutes,
+        duration.seconds + timerDuration.seconds
+      )
     });
   },
 

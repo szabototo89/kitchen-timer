@@ -1,25 +1,25 @@
 import * as React from 'react';
 import Button from 'common/button';
-import Timer from "models/timer";
+import Duration from "models/duration";
 
 interface ActiveTimerProps {
-  timer: Timer;
+  duration: Duration;
   onStartTimer?: any;
   onPauseTimer?: any;
 }
 
-function ActiveTimer({ timer, onStartTimer, onPauseTimer }: ActiveTimerProps) {
+function ActiveTimer({ duration, onStartTimer, onPauseTimer }: ActiveTimerProps) {
   return (
     <div className="active-timer__container">
       <div className="active-timer__duration">
         <div className="active-timer__duration--hours">
-          {timer.duration.hours}
+          {duration.hours}
         </div>
         <div className="active-timer__duration--minutes">
-          {timer.duration.minutes}
+          {duration.minutes}
         </div>
         <div className="active-timer__duration--seconds">
-          {timer.duration.seconds}
+          {duration.seconds}
         </div>
       </div>
 
