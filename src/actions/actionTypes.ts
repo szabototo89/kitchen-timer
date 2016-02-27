@@ -16,10 +16,12 @@ const ActionTypes = createActionType({
 
   activeTimer: {
     START_TIMER: null,
-    PAUSE_TIMER: null
+    PAUSE_TIMER: null,
+    UPDATE_TIMER: null
   },
 
   activeTimerList: {
+    ADD_TIMER: null,
     REMOVE_FROM_LIST: null
   },
 

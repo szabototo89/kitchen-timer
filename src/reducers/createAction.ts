@@ -4,7 +4,7 @@ export interface ActionResult<TState> {
   [actionType: string]: (state: TState, action: any) => TState;
 }
 
-export function createAction<TState, TAction extends Action>(initialState: TState, handlers?: ActionResult<TState>) {
+export function createAction<TState, TAction extends Action>(initialState: TState, handlers?: ActionResult<TState>, defaultHandler?: any) {
   return function (state: TState, action: TAction): TState {
     if (!state) return initialState;
     if (!handlers) return state;
@@ -14,6 +14,10 @@ export function createAction<TState, TAction extends Action>(initialState: TStat
         const handler = handlers[actionType];
         return handler(state, action);
       }
+    }
+
+    if (defaultHandler) {
+      return defaultHandler(state, action);
     }
 
     return state;

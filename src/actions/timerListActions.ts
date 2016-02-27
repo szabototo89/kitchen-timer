@@ -32,7 +32,7 @@ export function editTimer(timer: Timer): EditTimerAction {
 
 export function startTimer(timer: Timer) {
   return {
-    type: ActionTypes.timerList.START_TIMER,
+    type: ActionTypes.activeTimerList.ADD_TIMER,
     timer
   };
 }

@@ -1,8 +1,14 @@
 import * as React from 'react';
-import Timer from 'models/timer";
-import { startTimer, pauseTimer } from "actions/activeTimerActionts";
+import Timer from 'models/timer';
+import { startTimer, pauseTimer } from "actions/activeTimerActions";
 import ActiveTimerList from 'components/activeTimerList';
 import { connect } from 'react-redux';
+
+function mapStateToProps(state) {
+  return {
+    timers: state.activeTimerList.timers.map(timer => timer.timer)
+  };
+}
 
 function mapDispatchToProps(dispatch: any) {
   return {
@@ -16,4 +22,4 @@ function mapDispatchToProps(dispatch: any) {
   };
 }
 
-export default connect(state => state, mapDispatchToProps)(ActiveTimerList);
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveTimerList as any);

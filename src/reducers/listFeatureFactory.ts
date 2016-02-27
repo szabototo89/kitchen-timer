@@ -3,10 +3,9 @@ import ActionTypes from "actions/actionTypes";
 import assign from "utils/assign";
 
 export class ListFeatureFactory {
-  private id: string;
-  private initialState: any;
+  private id:string;
 
-  constructor(public name: string) {
+  constructor(public name:string) {
     this.id = `ListFeatureFactory__${name}`;
   }
 
@@ -28,10 +27,12 @@ export class ListFeatureFactory {
 
   public createReducer(initialState, options) {
     const { id } = this;
+
+    // initialize options if they are not defined
     options = assign(options, {
       mapListToState: (list) => list,
       mapStateToList: (state) => state,
-      compare: (item, action) => item !== action.item
+      compare: (that, other) => that !== other
     });
 
     const { mapListToState, mapStateToList, compare } = options;
@@ -43,14 +44,14 @@ export class ListFeatureFactory {
 
       return createAction(initialState, {
         [ActionTypes.listControl.REMOVE_ITEM](state) {
-          return assign({}, state, mapListToState(mapStateToList(state).filter(item => compare(item, action))));
+          return assign({}, state, mapListToState(mapStateToList(state).filter(item => compare(item, action.item))));
         },
 
         [ActionTypes.listControl.ADD_ITEM](state) {
-          return assign({}, state, mapListToState([...mapStateToList(state), action.item ]))
+          return assign({}, state, mapListToState([...mapStateToList(state), action.item]))
         }
       });
-    }
+    };
   }
 }
 
