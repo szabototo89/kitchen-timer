@@ -11,6 +11,7 @@ import Timer from 'models/timer';
 import Duration from 'models/duration';
 
 function App() {
+  // http://codepen.io/anon/pen/YqzrYj?editors=1000
   return (
     <div>
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">

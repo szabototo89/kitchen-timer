@@ -4,6 +4,8 @@ import Timer from "models/timer";
 
 interface ActiveTimerListProps {
   timers: Array<Timer>;
+  onStartTimer: (Timer) => void;
+  onPauseTimer: (Timer) => void;
 }
 
 function ActiveTimerList({ timers, onStartTimer, onPauseTimer }: ActiveTimerListProps) {
