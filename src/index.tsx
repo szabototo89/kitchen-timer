@@ -8,7 +8,6 @@ import appStore from 'stores/appStore';
 
 import ListContainer from 'containers/listContainer';
 
-
 const application = (
   <Provider store={appStore}>
     <div>
