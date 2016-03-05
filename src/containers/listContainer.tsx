@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from "react-redux";
-import { addElement, removeElement } from 'reducers/listFeatureReducer';
+import { addElement, removeElement, updateElement } from 'reducers/simpleListReducer';
 
 const ListContainer = ({ name, propName = null, onElementAddEventName = null, onElementRemoveEventName = null }) => (component) => {
   const _propName = propName || 'elements';
@@ -20,11 +20,11 @@ const ListContainer = ({ name, propName = null, onElementAddEventName = null, on
   const mapDispatchToProps = (dispatch) => {
     return {
       [_onElementAddEventName](element) {
-        dispatch(addElement(name, element));
+        dispatch(addElement(name)(element));
       },
 
       [_onElementRemoveEventName](element) {
-        dispatch(removeElement(name, element));
+        dispatch(removeElement(name)(element));
       }
     };
   };
