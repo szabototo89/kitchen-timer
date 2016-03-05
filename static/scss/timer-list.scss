@@ -1,4 +1,7 @@
+@import 'libs';
 @import 'utilities';
+
+$default-button: '.mdl-button, .mdl-js-button, .mdl-button--raised, .mdl-js-ripple-effect, .mdl-button--accent';
 
 @include block(timer-list) {
   @include element(container) {
@@ -6,11 +9,11 @@
   }
 
   @include element(edit-button) {
-    @extend .btn, .btn-success;
+    @extend #{$default-button};
   }
 
   @include element(remove-button) {
-    @extend .btn, .btn-danger;
+    @extend #{$default-button};
   }
 }
 
@@ -28,6 +31,6 @@
 
 @include block(timer-list-controls) {
   @include element(add-timer-button) {
-    @extend .btn, .btn-default;
+    @extend #{$default-button};
   }
 }
