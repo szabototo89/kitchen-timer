@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import listFeatureReducer from 'reducers/listFeatureReducer';
+import { reducer as simpleListReducer } from 'reducers/simpleListFactory';
 
 export default combineReducers({
-  lists: listFeatureReducer
+  lists: simpleListReducer(null, {
+    timerPresets: (a, b) => a.name === b.name
+  })
 });

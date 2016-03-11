@@ -20,7 +20,6 @@ export function updateTimerPreset(timer: TimerPreset) {
 }
 
 // Reducers
-
 const initialState = [];
 
 export function timerPresetsReducer(state = initialState, action) {
