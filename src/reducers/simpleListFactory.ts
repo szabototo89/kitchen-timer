@@ -9,7 +9,7 @@ const actions = createActionType({
 });
 
 // Actions
-const addElement = (name: string) => (element) => {
+export const addElement = (name: string) => (element) => {
   return {
     type: actions.ADD_ELEMENT,
     name,
@@ -17,7 +17,7 @@ const addElement = (name: string) => (element) => {
   };
 };
 
-const removeElement = (name: string) => (element) => {
+export const removeElement = (name: string) => (element) => {
   return {
     type: actions.REMOVE_ELEMENT,
     name,
@@ -25,7 +25,7 @@ const removeElement = (name: string) => (element) => {
   };
 };
 
-const updateElement = (name: string) => (oldElement, newElement) => {
+export const updateElement = (name: string) => (oldElement, newElement) => {
   return {
     type: actions.UPDATE_ELEMENT,
     name,
@@ -44,7 +44,7 @@ const initialState = {};
 
 export const reducer = (customReducers = null, comparators = null) => (state = initialState, action) => {
   const currentElements: Array<any> = state[action.name];
-  const comparator: (a: any, b: any) => boolean = comparators[action.name] || ((a, b) => a === b);
+  const comparator: (a: any, b: any) => boolean = (comparators && comparators[action.name]) || ((a, b) => a === b);
 
   switch (action.type) {
     case actions.ADD_ELEMENT: {
@@ -62,12 +62,17 @@ export const reducer = (customReducers = null, comparators = null) => (state = i
     }
   }
 
-  if (customReducers && currentElements) {
-    return Object.keys(customReducers).reduce((leftState, listName) => {
+  if (customReducers) {
+    const modifiedElements = Object.keys(customReducers).reduce((leftState, listName) => {
+      const elements = state[listName] || [];
+      const reducer = customReducers[listName];
+
       return Object.assign(leftState, {
-        [listName]: currentElements.map(element => customReducers[listName](element, action))
+        [listName]: elements.map(element => reducer(element, action))
       });
     }, {});
+
+    return Object.assign({}, state, modifiedElements);
   }
 
   return state;

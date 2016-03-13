@@ -1,4 +1,5 @@
 import * as React from 'react';
+import TimeDurationComponent from 'components/TimeDurationComponent';
 
 const TimerPresetComponent = ({ name, duration }) => {
   return (
@@ -7,6 +8,9 @@ const TimerPresetComponent = ({ name, duration }) => {
         {name}
       </div>
       <div>
+        <TimeDurationComponent hour={duration.hour}
+                               minute={duration.minute}
+                               second={duration.second} />
       </div>
     </div>
   )
