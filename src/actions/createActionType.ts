@@ -13,7 +13,10 @@ export default function createActionType<TActionType>(actionTypes: TActionType):
 
     for (const actionType of Object.keys(actionTypes)) {
       const value = actionTypes[actionType];
-      if (value instanceof Object) {
+      if (value instanceof Function) {
+        result[actionType] = _getActionTypeValue(prefix, value(actionType));
+      }
+      else if (value instanceof Object) {
         result[actionType] = _createActionType(_getActionTypeValue(prefix, actionType), value);
       }
       else {

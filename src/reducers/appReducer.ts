@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { reducer as simpleListReducer } from 'reducers/simpleListFactory';
-import { reducer as timerPresetReducer } from 'reducers/timerPresetReducer';
+
+import { reducer as activeTimerListReducer } from 'reducers/activeTimerListReducer';
+import { reducer as timerPresetListReducer } from 'reducers/timerPresetListReducer';
 
 // reducers
 export default combineReducers({
-  lists: simpleListReducer({
-    timerPresets: timerPresetReducer
-  }, null)
+  timerPresets: timerPresetListReducer,
+  activeTimers: activeTimerListReducer
 });
