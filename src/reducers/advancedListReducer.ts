@@ -2,7 +2,6 @@ import createActionType from "actions/createActionType";
 
 const advancedListFactory = (name: string) => ({ elementReducer = null, comparator = null } = {}) => {
   // action types
-  console.info(name, elementReducer)
   const computeActionName = (name) => (actionName) => `${actionName}:${name}`;
 
   const actions = createActionType({

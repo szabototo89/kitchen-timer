@@ -6,7 +6,7 @@ import { editTimerPreset, saveTimerPreset } from 'reducers/timerPresetReducer';
 import { changeTimerPresetDuration, changeTimerPresetName } from 'reducers/timerPresetReducer';
 import { TimerPreset } from "models/TimerPreset";
 import { Duration } from "models/Duration";
-import { startActiveTimer } from 'reducers/activeTimerReducer';
+import { startActiveTimer } from 'reducers/activeTimerListReducer';
 import { connect } from "react-redux";
 
 function mapDispatchToProps(dispatch) {
