@@ -4,9 +4,19 @@ export class Duration {
   }
 
   public static add(that: Duration, other: Duration): Duration {
-    const hour = that.hour + other.hour;
-    const minute = that.minute + other.minute;
-    const second = that.second + other.second;
+    let hour = that.hour + other.hour;
+    let minute = that.minute + other.minute;
+    let second = that.second + other.second;
+
+    if (minute < 0) {
+      hour = hour - 1;
+      minute = 60 + minute;
+    }
+
+    if (second < 0) {
+      minute = minute - 1;
+      second = 60 + second;
+    }
 
     return new Duration(hour, minute, second);
   }

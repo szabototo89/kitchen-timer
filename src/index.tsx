@@ -8,7 +8,7 @@ import appStore from 'stores/appStore';
 
 import TimerInstanceService from 'models/TimerInstanceService';
 
-export const timerInstanceService = new TimerInstanceService(appStore.dispatch);
+export const timerInstanceService = new TimerInstanceService(appStore.dispatch, appStore.getState);
 
 const application = (
   <Provider store={appStore}>

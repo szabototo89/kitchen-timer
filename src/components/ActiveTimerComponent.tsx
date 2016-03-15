@@ -2,11 +2,12 @@ import * as React from 'react';
 import TimeDurationComponent from 'components/TimeDurationComponent';
 
 const ActiveTimerComponent = ({ activeTimer }) => {
-  const { name, duration } = activeTimer.timerPreset;
+  const { name } = activeTimer.timerPreset;
+  const { currentValue } = activeTimer;
 
   return <div>
     <div>{name}</div>
-    <TimeDurationComponent hour={duration.hour} minute={duration.minute} second={duration.second} />
+    <TimeDurationComponent hour={currentValue.hour} minute={currentValue.minute} second={currentValue.second} />
   </div>;
 };
 

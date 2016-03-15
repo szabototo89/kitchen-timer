@@ -7,7 +7,8 @@ export enum ActiveTimerMode {
 }
 
 export default class ActiveTimer {
-  constructor(public timerPreset: TimerPreset,
+  constructor(public id: string,
+              public timerPreset: TimerPreset,
               public mode: ActiveTimerMode = ActiveTimerMode.STOPPED,
               public currentValue: Duration = timerPreset.duration) {
   }

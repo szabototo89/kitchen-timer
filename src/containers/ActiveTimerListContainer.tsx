@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 import { SimpleList } from 'reducers/simpleListFactory';
 import ActiveTimerList from 'components/ActiveTimerList';
 import ActiveTimer, { ActiveTimerMode } from "models/ActiveTimer";
-import { setActiveTimerMode, decreaseActiveTimer } from "reducers/activeTimerReducer";
-import { addElement, removeElement, getActiveTimers } from 'reducers/activeTimerListReducer';
+import { setActiveTimerMode, decreaseActiveTimer, resumeActiveTimer } from "reducers/activeTimerReducer";
+import { removeElement, getActiveTimers } from 'reducers/activeTimerListReducer';
 import { Duration } from "models/Duration";
 
 const mapStateToProps = (state) => {
@@ -14,25 +14,20 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  const changeTimerMode = mode => activeTimer => dispatch(setActiveTimerMode(activeTimer, mode));
+  const changeTimerMode = mode => activeTimer => dispatch(setActiveTimerMode(activeTimer.id, mode));
 
   return {
-    onActiveTimerAdd(timerPreset) {
-      dispatch(addElement(new ActiveTimer(timerPreset)));
-    },
-
     onActiveTimerRemove(activeTimer) {
       dispatch(removeElement(activeTimer));
     },
 
-    onActiveTimerStop: changeTimerMode(ActiveTimerMode.STOPPED),
     onActiveTimerPause: changeTimerMode(ActiveTimerMode.PAUSED),
-    onActiveTimerStart: changeTimerMode(ActiveTimerMode.COUNTING),
+    onActiveTimerStop: changeTimerMode(ActiveTimerMode.STOPPED),
 
-    onActiveTimerDecrease(activeTimer) {
-      dispatch(decreaseActiveTimer(activeTimer, new Duration(0, 0, -1)));
-    }
-  }
+    onActiveTimerResume(activeTimer: ActiveTimer) {
+      dispatch(resumeActiveTimer(activeTimer));
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActiveTimerList as any);
