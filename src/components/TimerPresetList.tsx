@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Button from 'common/button';
+import Button from 'common/Button';
+import { SimpleButton, PrimaryButton } from 'common/buttons';
 import TimerPresetComponent from 'components/TimerPresetComponent';
 import TimerPresetEditor from 'components/TimerPresetEditor';
 
@@ -11,8 +12,6 @@ const TimerPresetList = (props) => {
 
   return (
     <div>
-      <h1>Timer Presets</h1>
-
       {presets.map((preset, index) => (
         <div key={index}>
           {!preset.isEditMode &&
@@ -20,9 +19,9 @@ const TimerPresetList = (props) => {
               <TimerPresetComponent name={preset.name}
                                     duration={preset.duration} />
 
-              <Button onClick={onElementRemove.bind(null, preset)}>Remove</Button>
-              <Button onClick={onElementEdit.bind(null, preset)}>Edit</Button>
-              <Button onClick={onTimerStart.bind(null, preset)}>Start timer</Button>
+              <SimpleButton onClick={onElementRemove.bind(null, preset)}>Remove</SimpleButton>
+              <SimpleButton onClick={onElementEdit.bind(null, preset)}>Edit</SimpleButton>
+              <SimpleButton onClick={onTimerStart.bind(null, preset)}>Start timer</SimpleButton>
             </div>}
 
           {preset.isEditMode &&
@@ -31,14 +30,14 @@ const TimerPresetList = (props) => {
                                  onTimerPresetNameChange={onTimerPresetNameChange.bind(null, preset)}
                                  onDurationChange={onDurationChange.bind(null, preset)} />
 
-              <Button onClick={onElementSave.bind(null, preset)}>Save</Button>
+              <SimpleButton onClick={onElementSave.bind(null, preset)}>Save</SimpleButton>
             </div>}
         </div>
       ))}
 
-      <Button onClick={onElementAdd}>
+      <PrimaryButton onClick={onElementAdd}>
         Add Timer Preset
-      </Button>
+      </PrimaryButton>
     </div>
   );
 };
